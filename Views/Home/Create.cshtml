@@ -1,13 +1,14 @@
-﻿@model Student
+﻿@model StudentCreateViewModel
 @{
-    ViewBag.Title = "添加学生";
+	ViewBag.Title = "添加学生";
 }
 
-<form asp-controller="Home" asp-action="create" method="post" class="mt-3">
+@* enctype="multipart/form-data"上传文件 *@
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="create" method="post" class="mt-3">
 	<div class="form-group row">
 		<label asp-for="Name" class="col-sm-2 col-form-label"></label>
 		<div class="col-sm-10">
-			<input asp-for="Name" class="form-control" placeholder="请输入学生姓名"/>
+			<input asp-for="Name" class="form-control" placeholder="请输入学生姓名" />
 			<span asp-validation-for="Name" class="text-danger"></span>
 		</div>
 	</div>
@@ -25,13 +26,31 @@
 				<option value="">请选择</option>
 			</select>
 			<span asp-validation-for="ClassName" class="text-danger"></span>
-			</div>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+		<div class="col-sm-10">
+			<input asp-for="Photo" class="form-control custom-file-input" />
+			<label class="custom-file-label">点击选择图片</label>
+		</div>
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-10">
 			<button type="submit" class="btn btn-primary">添加</button>
 		</div>
 	</div>
-
+	@section Script
+	{
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".custom-file-input").on("change", function() {
+					var fileName = $(this).val().split("\\").pop();//双斜杠转义 \
+					console.log($(this).val());
+					$(this).next(".custom-file-label").html(fileName);
+				});
+			});
+		</script>
+	}
 </form>
 

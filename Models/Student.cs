@@ -26,5 +26,7 @@ namespace StudentMvc.Models
         [Display(Name="邮箱地址")]
         [DataType(DataType.EmailAddress,ErrorMessage = "邮箱地址错误")]
         public string Email { get; set; }
+
+        public string PhotoPath { get; set; }
     }
 }
