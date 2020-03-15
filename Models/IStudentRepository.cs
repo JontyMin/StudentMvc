@@ -9,5 +9,6 @@ namespace StudentMvc.Models
     {
         Student GetStudent(int id);
         IEnumerable<Student> GetStudents();
+        Student Create(Student student);
     }
 }

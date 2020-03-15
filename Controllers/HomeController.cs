@@ -34,5 +34,21 @@ namespace StudentMvc.Controllers
             return View(homeDetailsViewModel);
 
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                var stu = _studentRepository.Create(student);
+                return RedirectToAction("Details", new {id = stu.Id});
+            }
+
+            return View();
+        }
     }
 }

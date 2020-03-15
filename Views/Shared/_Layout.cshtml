@@ -2,27 +2,48 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <script src="~/twitter-bootstrap/js/bootstrap.js"></script>
-    <style>
-        body {
-	        margin-left: 50px;
-	        margin-right: 50px;
-        }
-        img {
-	        width: 160px;
-	        height: 160px;
-        }
-	     
-    </style>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<style>
+		body {
+			margin-left: 50px;
+			margin-right: 50px
+		}
+
+		img {
+			width: auto;
+			height: 180px;
+		}
+	</style>
 </head>
 <body>
-<div>
+<div class="container">
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<a class="navbar-brand" href="/">
+			<img src="~/images/1572171815964.jpeg" style="width: 15px;height: 15px"/>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#se1">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="se1" class="collapse navbar-collapse">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/">学生列表</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/Home/Create">添加学生</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
 	@RenderBody()
 </div>
-    @RenderSection("Script",required:false)
-<script src="js/Custom.js"></script>
+		<script src="~/jquery/jquery.js"></script>
+		<script src="~/twitter-bootstrap/js/bootstrap.js"></script>
+		@RenderSection("Script", required: false)
+
+		<script src="js/Custom.js"></script>
 </body>
 </html>
