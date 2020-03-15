@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Student>
+@{
+	ViewBag.Title = "学生列表页面";
+}
+
+<div class="card-deck">
+	@foreach (var student in Model)
+	{
+		<div class="card m-3">
+			<div class="card-header">
+				<h3>@student.Name</h3>
+			</div>
+			<img class="card-img-top" src="~/images/face2.jpg"/>
+			<div class="card-footer text-center">
+				<a href="Home/Details/@student.Id" class="btn btn-primary">查看</a>
+				<a href="#" class="btn btn-primary">编辑</a>
+				<a href="#" class="btn btn-danger">删除</a>
+			</div>
+		</div>
+	}
+</div>
+
