@@ -43,8 +43,15 @@ namespace StudentMvc
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");//¿πΩÿ“Ï≥£
+
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");//404
+            }
 
             app.UseStaticFiles();
+
             app.UseRouting();
             //app.UseMvcWithDefaultRoute();
 

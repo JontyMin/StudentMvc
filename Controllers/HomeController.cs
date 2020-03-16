@@ -36,9 +36,16 @@ namespace StudentMvc.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+            //throw  new Exception("异常发生在Details视图");
+            var stu = _studentRepository.GetStudent(id);
+            if (stu==null)
+            {
+                Response.StatusCode = 404;
+                return View("StudentNotFound", id);
+            }
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Student = _studentRepository.GetStudent(id),
+                Student = stu,
                 PageTitle = "学生信息"
             };
             //ViewBag.Student = ls;
