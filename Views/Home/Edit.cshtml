@@ -1,10 +1,13 @@
-﻿@model StudentCreateViewModel
+﻿@model StudentEditViewModel
 @{
-	ViewBag.Title = "添加学生";
+	ViewBag.Title = "编辑学生信息";
+	//获取当前照片路径
+	var photoPath = "~/images/" + (Model.ExistingPhotoPath ?? "default.jpg");
 }
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="Edit" method="post" class="mt-3">
+	<input hidden asp-for="Id" />
+	<input hidden asp-for="ExistingPhotoPath" />
 
-@* enctype="multipart/form-data"上传文件 *@
-<form enctype="multipart/form-data" asp-controller="Home" asp-action="create" method="post" class="mt-3">
 	<div class="form-group row">
 		<label asp-for="Name" class="col-sm-2 col-form-label"></label>
 		<div class="col-sm-10">
@@ -31,39 +34,29 @@
 	<div class="form-group row">
 		<label asp-for="Photo" class="col-sm-2 col-form-label"></label>
 		<div class="col-sm-10">
-			@*文件多选multiple*@
 			<input asp-for="Photo" class="form-control custom-file-input" />
 			<label class="custom-file-label">点击选择图片</label>
 		</div>
 	</div>
-	<div class="form-group row">
+	<div class="form-group row col-sm-4 offset-4">
+		<img class="imagesThumbnail" src="@photoPath" asp-append-version="true" />
+	</div>
+	<div class="form-group row ">
 		<div class="col-sm-10">
-			<button type="submit" class="btn btn-primary">添加</button>
+			<button type="submit" class="btn btn-primary">更新</button>
+			<a asp-action="Index" asp-controller="Home" class="btn btn-info">取消</a>
 		</div>
 	</div>
-	@section Script
-	{
-		<script type="text/javascript">
-
-			//展示文件名
-			$(document).ready(function() {
-				$(".custom-file-input").on("change", function () {
-
-					//单文件上传
-					var fileName = $(this).val().split("\\").pop();//双斜杠转义 \
-					console.log($(this).val());
-					$(this).next(".custom-file-label").html(fileName);
-					//多文件上传
-					//var fileLabel = $(this).next(".custom-file-label");
-					//var files = $(this)[0].files;//获取文件
-					//if (files.length>1) {
-					//	fileLabel.html("您选择了："+files.length+"个文件");
-					//} else if (files.length>1) {
-					//	fileLabel.html(files[0].name);
-					//}
-				});
-			});
-		</script>
-	}
 </form>
-
+@section Script
+{
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".custom-file-input").on("change", function () {
+				var fileName = $(this).val().split("\\").pop();
+				console.log($(this).val());
+				$(this).next(".custom-file-label").html(fileName);
+			});
+		});
+	</script>
+}

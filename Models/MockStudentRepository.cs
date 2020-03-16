@@ -55,6 +55,7 @@ namespace StudentMvc.Models
                 stu.Name = updateStudent.Name;
                 stu.Email = updateStudent.Email;
                 stu.ClassName = updateStudent.ClassName;
+                stu.PhotoPath = updateStudent.PhotoPath;
             }
 
             return stu;

@@ -10,7 +10,7 @@
 				<h1>@Model.Student.Name</h1>
 			</div>
 			<div class="card-body text-center">
-				<img class="card-img-top" src="~/images/@Model.Student.PhotoPath"/>
+				<img class="card-img-top imagesThumbnail" src="~/images/@Model.Student.PhotoPath"/>
 				<h3>学生ID：@Model.Student.Id</h3>
 				<h3>学生邮箱：@Model.Student.Email</h3>
 				<h3>班级名称：@Model.Student.ClassName</h3>
@@ -19,7 +19,7 @@
 		<div class="card-footer text-center">
 			<a href="#" class="btn btn-primary">查看</a>
 			<a href="#" class="btn btn-primary">编辑</a>
-			<a href="/Home/Delete/@Model.Student.Id" class="btn btn-danger">删除</a>
+			<a asp-action="Delete" asp-route-id="@Model.Student.Id" class="btn btn-danger">删除</a>
 		</div>
 	</div>
 </div>
