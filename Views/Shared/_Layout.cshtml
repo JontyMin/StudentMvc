@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width"/>
 	<title>@ViewBag.Title</title>
 	<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
 	<link href="~/css/site.css" rel="stylesheet" />
@@ -14,7 +14,7 @@
 	</style>
 </head>
 <body>
-<div class="container">
+
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<a class="navbar-brand" href="/">
 			<img src="~/images/1572171815964.jpeg" style="width: 15px;height: 15px"/>
@@ -33,9 +33,9 @@
 			</ul>
 		</div>
 	</nav>
-
-	@RenderBody()
-</div>
+	<div class="container">
+		@RenderBody()
+	</div>
 		<script src="~/jquery/jquery.js"></script>
 		<script src="~/twitter-bootstrap/js/bootstrap.js"></script>
 		@RenderSection("Script", required: false)

@@ -3,20 +3,23 @@
 	ViewBag.Title = "学生列表页面";
 }
 
-<div class="card-deck">
+<div class="row">
 	@foreach (var student in Model)
 	{
-		<div class="card m-3">
-			<div class="card-header">
-				<h3>@student.Name</h3>
-			</div>
-			<img class="card-img-top imagesThumbnail" src="~/images/@student.PhotoPath"/>
-			<div class="card-footer text-center">
-				<a asp-controller="Home" asp-action="Details" asp-route-id="@student.Id" class="btn btn-primary">查看</a>
-				<a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-primary">编辑</a>
-				<a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-danger">删除</a>
+		<div class="card-deck col-md-3">
+			<div class="card">
+				<div class="card-header">
+					<h3>@student.Name</h3>
+				</div>
+				<img class="card-img-top imagesThumbnail" src="~/images/@student.PhotoPath" />
+				<div class="card-footer text-center">
+					<a asp-controller="Home" asp-action="Details" asp-route-id="@student.Id" class="btn btn-primary">查看</a>
+					<a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-primary">编辑</a>
+					<a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-danger">删除</a>
+				</div>
 			</div>
 		</div>
 	}
+
 </div>
 
