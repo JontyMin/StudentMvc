@@ -43,10 +43,10 @@ namespace StudentMvc.Controllers
         public IActionResult Error()
         {
             var execption = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            _logger.LogError($"路径：{execption.Path},产生了一个错误{execption.Error.Message}");
-            //ViewBag.ExceptionPath = execption.Path;
-            //ViewBag.ErrorMessage = execption.Error.Message;
-            //ViewBag.ErrorStackTrace = execption.Error.StackTrace;
+            // _logger.LogError($"路径：{execption.Path},产生了一个错误{execption.Error.Message}");
+            ViewBag.ExceptionPath = execption.Path;
+            ViewBag.ErrorMessage = execption.Error.Message;
+            ViewBag.ErrorStackTrace = execption.Error.StackTrace;
             return View();
         }
     }
