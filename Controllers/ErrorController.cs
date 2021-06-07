@@ -26,13 +26,13 @@ namespace StudentMvc.Controllers
         public IActionResult HttpStatusHandler(int statusCode)
         {
             var execption = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
-            switch (statusCode)
-            {
-                case 404:
-                    ViewBag.ErrorMessage = "抱歉，您访问的页面不存在";
-                    _logger.LogWarning($"发生了404错误,路径：{execption.OriginalPath},以及查询字符串：{execption.OriginalQueryString}");
-                    break;
-            }
+            // switch (statusCode)
+            // {
+            //     case 404:
+            //         ViewBag.ErrorMessage = "抱歉，您访问的页面不存在";
+            //         _logger.LogWarning($"发生了404错误,路径：{execption.OriginalPath},以及查询字符串：{execption.OriginalQueryString}");
+            //         break;
+            // }
 
             return View("NotFound");
         }

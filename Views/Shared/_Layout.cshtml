@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity 
+@inject SignInManager<IdentityUser> _SignInManager
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -30,9 +32,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Home/Create">添加学生</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Account/Register">注册账号</a>
-                </li>
+                
+					
+					@if (_SignInManager.IsSignedIn(User))
+					{
+					    <li class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+								<button type="submit" style="width: auto" class="nav-link btn btn-link py-0">注销 @User.Identity.Name</button>
+                            </form>
+                        </li>
+					}
+					else
+					{
+					    <li class="nav-item">
+                            <a class="nav-link" href="/Account/Register">注册</a>
+                        </li>
+					    <li class="nav-item">
+                            <a class="nav-link" href="/Account/Login">登录</a>
+                        </li>
+					}
+                   
 			</ul>
 		</div>
 	</nav>

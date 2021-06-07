@@ -35,7 +35,21 @@ namespace StudentMvc
                 );
             services.AddScoped<IStudentRepository, SQLStudentRepository>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                // 配置密码默认设置
+
+                // 最大允许重复字符数
+                options.Password.RequiredUniqueChars = 3;
+                // 至少有一个非数字字母字符
+                options.Password.RequireNonAlphanumeric = false;
+                // 最小长度验证
+                options.Password.RequiredLength = 6;
+                // 必须包含小写字母
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;// 大写字母
+                options.Password.RequireDigit = false;// 必须包含数字
+            }).AddEntityFrameworkStores<AppDbContext>();
 
         }
 
