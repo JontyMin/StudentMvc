@@ -29,6 +29,10 @@ namespace StudentMvc
         {
             //mvc
             services.AddMvc();
+
+            //使用该扩展方法
+            services.AddHealthChecks();
+
             //services.AddControllersWithViews();
             services.AddDbContextPool<AppDbContext>(
                 options=>options.UseSqlServer(Configuration.GetConnectionString("StudentMVCConnection"))
@@ -67,6 +71,8 @@ namespace StudentMvc
                 app.UseStatusCodePagesWithRedirects("/Error/{0}");//404
             }
 
+            
+
             app.UseStaticFiles();
 
             // 授权
@@ -77,6 +83,8 @@ namespace StudentMvc
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/health");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
